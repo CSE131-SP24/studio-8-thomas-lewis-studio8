@@ -5,11 +5,19 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		//Hint: 1 point per choice
 		//FIXME
+		super(prompt, answer, 4, choices);
 	}
 	
 	public int checkAnswer(String givenAnswer) {
 		//FIXME Should return partial credit (if earned)!
-		return 0;
+		int errors = 0;
+		errors += this.findMissingCorrectAnswers(givenAnswer);
+		errors += this.findIncorrectGivenAnswers(givenAnswer);
+
+		
+		
+		
+		return 4-errors;
 	}
 
 	private int findMissingCorrectAnswers(String givenAnswer) {
